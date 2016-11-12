@@ -48,3 +48,41 @@ class ImageMsg(Msg):
         </xml>
         """
         return XmlForm.format(**self.__dict)
+
+class ImageTextMsg(Msg):
+    def __init__(self, toUserName, fromUserName, title1, title, description1, description, picurl, url):
+        self.__dict = dict()
+        self.__dict['toUser'] = toUserName
+    	self.__dict['fromUser'] = fromUserName
+        self.__dict['picurl'] = picurl
+    	self.__dict['url'] = url
+        self.__dict['description1'] = description1
+        self.__dict['description'] = description
+    	self.__dict['title1'] = title1
+    	self.__dict['title'] = title
+    	self.__dict['CreateTime'] = int(time.time())
+    def send(self):
+        XmlForm = """
+        <xml>
+        <ToUserName><![CDATA[toUser]]></ToUserName>
+        <FromUserName><![CDATA[fromUser]]></FromUserName>
+        <CreateTime>{CreateTime}</CreateTime>
+        <MsgType><![CDATA[news]]></MsgType>
+        <ArticleCount>2</ArticleCount>
+        <Articles>
+        <item>
+        <Title><![CDATA[title1]]></Title> 
+        <Description><![CDATA[description1]]></Description>
+        <PicUrl><![CDATA[picurl]]></PicUrl>
+        <Url><![CDATA[url]]></Url>
+        </item>
+        <item>
+        <Title><![CDATA[title]]></Title>
+        <Description><![CDATA[description]]></Description>
+        <PicUrl><![CDATA[picurl]]></PicUrl>
+        <Url><![CDATA[url]]></Url>
+        </item>
+        </Articles>
+        </xml> 
+        """
+        return XmlForm.format(**self.__dict)

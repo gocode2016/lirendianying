@@ -51,6 +51,7 @@ class Handle(object):
                     Handle.count = 0
                 content_gb = "电影名:" + results_name[Handle.count][0].encode('utf-8') + "链接：" + results_url[Handle.count][0].encode('utf-8')
                 replyMsg = reply.TextMsg(toUser, fromUser, content_gb)
+                #replyMsg = reply.ImageTextMsg(toUser, fromUser, 'test', 'test', 'description1', 'description', 'http://139.196.29.97:80/images/16175025-e8ae03a3023543a28d9b6be8b03990c9.jpg', 'www.baidu.com')
                     #replyMsg.send()
                 #return
                 return replyMsg.send()
