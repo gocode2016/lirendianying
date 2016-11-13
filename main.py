@@ -2,9 +2,11 @@
 # filename: main.py
 import web
 from handle import Handle
+from images import Images
 
 urls = (
     '/', 'Handle',
+    '/images/(.*)', "Images"
 )
 
 if __name__ == '__main__':
