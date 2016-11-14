@@ -3,11 +3,11 @@
 import MySQLdb
 
 class Select():
-    def SelectData(self,key):
+    def SelectData(self,key, table):
         self.conn = MySQLdb.connect(host="139.196.29.97", db='movie', user='root', passwd='root', port=3306, charset= 'utf8', use_unicode=True)
         self.cur = self.conn.cursor()
 
-        sql = "select %s from best_movies" %key
+        sql = "select %s from %s" %(key,table)
         self.cur.execute(sql)
 
         results = self.cur.fetchall()
