@@ -57,7 +57,7 @@ class ImageTextMsg(Msg):
         self.__dict['toUser'] = toUserName
         self.__dict['fromUser'] = fromUserName
         self.__dict['picurl_big'] = "http://139.196.29.97:80/images/2169762_103947888000_2.jpg"
-        self.__dict['url_big'] = "www.baidu.com"
+        self.__dict['url_big'] = "http://benjen.win/index/movie.html"
         self.__dict['description_big'] = "历史回顾"
         self.__dict['title_big'] = "histroy"
         self.__dict['CreateTime'] = int(time.time())
