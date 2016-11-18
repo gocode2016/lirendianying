@@ -3,20 +3,52 @@
 import MySQLdb
 
 class Select():
-    def SelectData(self,key, table):
-        self.conn = MySQLdb.connect(host="139.196.29.97", db='movie', user='root', passwd='root', port=3306, charset= 'utf8', use_unicode=True)
-        self.cur = self.conn.cursor()
+    def SelectDataDesc(self,key, table):
+        conn = MySQLdb.connect(host="139.196.29.97", db='movie', user='root', passwd='root', port=3306, charset= 'utf8', use_unicode=True)
+        cur = conn.cursor()
 
-        sql = "select %s from %s" %(key,table)
-        self.cur.execute(sql)
+        sql = "select %s from %s order by movie_id desc" %(key,table)
+        cur.execute(sql)
 
-        results = self.cur.fetchall()
-
-       # for row in results:
-      #      id = row[0]
-      #      info = row[1]
-	#    url = row[9]
-         #   print "%s, %s" %(id, info)
-        self.cur.close()
-        self.conn.close()
+        results = cur.fetchall()
+        cur.close()
+        conn.close()
         return results
+
+    def SelectData(self,key, table):
+        conn = MySQLdb.connect(host="139.196.29.97", db='movie', user='root', passwd='root', port=3306, charset= 'utf8', use_unicode=True)
+        cur = conn.cursor()
+
+        sql = "select %s from %s order by movie_id desc" %(key,table)
+        cur.execute(sql)
+
+        results = cur.fetchall()
+        cur.close()
+        conn.close()
+        return results
+
+    def GetDataOld(self):
+        conn = MySQLdb.connect(host="139.196.29.97", db='movie', user='root', passwd='root', port=3306,
+                                    charset='utf8', use_unicode=True)
+        cur = conn.cursor()
+        cur.execute('SELECT * FROM old_movies order by movie_id desc')
+        numrow = int(cur.rowcount)
+        print numrow
+        if numrow == 0:
+            print "there is not raw in best_movies"
+            cur.close()
+            conn.close()
+            return
+        while True:
+            row = cur.fetchone()
+            if row[9] != None:
+                break;
+        cur.close()
+        conn.close()
+        print row
+        return row
+ 
+
+
+
+
