@@ -5,9 +5,9 @@ import mysql
 
 render = web.template.render('templates/')   
 
-class Index:
+class IndexNew:
     def GET(self):
         temp = mysql.Select()
-	movie = temp.GetDataOld()
+	movie = temp.GetDataOldNew()
         name = ('test1','test2')
         return render.daily(movie)

@@ -11,6 +11,8 @@ def parse_xml(web_data):
         return TextMsg(xmlData)
     elif msg_type == 'image':
         return ImageMsg(xmlData)
+    elif msg_type == 'event':
+        return EventMsg(xmlData)
 
 class Msg(object):
     def __init__(self, xmlData):
@@ -18,7 +20,6 @@ class Msg(object):
         self.FromUserName = xmlData.find('FromUserName').text
         self.CreateTime = xmlData.find('CreateTime').text
         self.MsgType = xmlData.find('MsgType').text
-        self.MsgId = xmlData.find('MsgId').text
 
 class TextMsg(Msg):
     def __init__(self, xmlData):
@@ -30,4 +31,10 @@ class ImageMsg(Msg):
         Msg.__init__(self, xmlData)
         self.PicUrl = xmlData.find('PicUrl').text
         self.MediaId = xmlData.find('MediaId').text
+
+class EventMsg(Msg):
+    def __init__(self, xmlData):
+        print "zhaojiayu1"
+        Msg.__init__(self, xmlData)
+        self.Event = xmlData.find('Event').text
 

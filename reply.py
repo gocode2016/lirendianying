@@ -49,19 +49,48 @@ class ImageMsg(Msg):
         """
         return XmlForm.format(**self.__dict)
 
-
-
-class ImageTextMsg(Msg):
+class ImageTextMsgSimple(Msg):
     def __init__(self, toUserName, fromUserName, title, description, picurl, url):
         self.__dict = dict()
         self.__dict['toUser'] = toUserName
         self.__dict['fromUser'] = fromUserName
-        self.__dict['picurl_big'] = "http://139.196.29.97:80/images/2169762_103947888000_2.jpg"
-        self.__dict['url_big'] = "http://benjen.win/index/movie.html"
-        self.__dict['description_big'] = "历史回顾"
-        self.__dict['title_big'] = "histroy"
+        self.__dict['picurl'] = picurl
+        self.__dict['url'] = url
+        self.__dict['description'] = description
+        self.__dict['title'] = title
         self.__dict['CreateTime'] = int(time.time())
-        print self.__dict['description_big']
+    def send(self):
+        XmlForm = """
+        <xml>
+        <ToUserName><![CDATA[{toUser}]]></ToUserName>
+        <FromUserName><![CDATA[{fromUser}]]></FromUserName>
+        <CreateTime>{CreateTime}</CreateTime>
+        <MsgType><![CDATA[news]]></MsgType>
+        <ArticleCount>1</ArticleCount>
+        <Articles>
+        <item>
+        <Title><![CDATA[{title}]]></Title> 
+        <Description><![CDATA[{description}]]></Description>
+        <PicUrl><![CDATA[{picurl}]]></PicUrl>
+        <Url><![CDATA[{url}]]></Url>
+        </item>
+        </Articles>
+        <FuncFlag>0</FuncFlag>
+        </xml>
+        """
+        return XmlForm.format(**self.__dict)
+
+class ImageTextMsg(Msg):
+    def __init__(self, toUserName, fromUserName, title, description, picurl, url, url_big):
+        self.__dict = dict()
+        self.__dict['toUser'] = toUserName
+        self.__dict['fromUser'] = fromUserName
+        self.__dict['picurl_big'] = "http://alitiane.com/images/2169762_103947888000_2.jpg"
+        self.__dict['url_big'] = url_big
+        self.__dict['description_big'] = "历史回顾"
+        self.__dict['title_big'] = "点击进入电影观看清单"
+        self.__dict['CreateTime'] = int(time.time())
+        #print self.__dict['description_big']
         for i in range(1,6):
             self.__dict['title%d'%i] = title[i][0].encode('utf-8')
             self.__dict['picurl%d' %i] = picurl[i][0].encode('utf-8')

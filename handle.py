@@ -9,6 +9,7 @@ import receive
 import mysql
 import json
 import urllib2
+import mysql
 
 class Handle(object):
     count = 0
@@ -41,35 +42,78 @@ class Handle(object):
             webData = web.data()
             print "Handle Post webdata is ", webData   #后台打日志
             recMsg = receive.parse_xml(webData)
-            if isinstance(recMsg, receive.Msg) and recMsg.MsgType == 'text' and recMsg.Content == 'wq':
+            if isinstance(recMsg, receive.Msg) and recMsg.MsgType == 'text' and recMsg.Content == '1':
                 mysqlData = mysql.Select()
                 toUser = recMsg.FromUserName
                 fromUser = recMsg.ToUserName
-                results_name = mysqlData.SelectData("movie_name","best_movies")
-                results_url = mysqlData.SelectData("movie_url","best_movies")
-                results_rate = mysqlData.SelectData("movie_rate","best_movies")
-                results_pic = mysqlData.SelectData("movie_picurl","best_movies")
-                replyMsg = reply.ImageTextMsg(toUser, fromUser,results_name, results_rate, results_pic,results_url)
-                print replyMsg.send()
-                
+                results_name = mysqlData.SelectData("movie_name","old_movies")
+                results_url = mysqlData.SelectData("movie_url","old_movies")
+                results_rate = mysqlData.SelectData("movie_rate","old_movies")
+                results_pic = mysqlData.SelectData("movie_picurl","old_movies")
+                url_big = "http://alitiane.com/history"
+                replyMsg = reply.ImageTextMsg(toUser, fromUser,results_name, results_rate, results_pic,results_url,url_big)
                 return replyMsg.send()
-           # elif isinstance(recMsg, receive.Msg) and recMsg.MsgType == 'text' and recMsg.Content == '':
+            
+            if isinstance(recMsg, receive.Msg) and recMsg.MsgType == 'text' and recMsg.Content == '2':
+                mysqlData = mysql.Select()
+                toUser = recMsg.FromUserName
+                fromUser = recMsg.ToUserName
+                results_name = mysqlData.SelectData("movie_name","old_new_movies")
+                results_url = mysqlData.SelectData("movie_url","old_new_movies")
+                results_rate = mysqlData.SelectData("movie_rate","old_new_movies")
+                results_pic = mysqlData.SelectData("movie_picurl","old_new_movies")
+                url_big = "http://alitiane.com/history_new"
+                replyMsg = reply.ImageTextMsg(toUser, fromUser,results_name, results_rate, results_pic,results_url,url_big)
+                return replyMsg.send()
 
+            elif isinstance(recMsg, receive.Msg) and recMsg.MsgType == 'text' and recMsg.Content == '3':
+                toUser = recMsg.FromUserName
+                fromUser = recMsg.ToUserName
+                title = "AI围棋"
+                content = "天元围棋利用深度学习等人工智能技术，同时允许多人挑战，目前棋力已达业余六段, 点击进入对战..."
+                picturl = "http://alitiane.com/images/weiqi.jpg"
+                url = "https://ty.tianrang.com"
+                replyMsg = reply.ImageTextMsgSimple(toUser, fromUser, title, content, picturl, url)
+                return replyMsg.send()
+              
+            elif isinstance(recMsg, receive.Msg) and recMsg.MsgType == 'text' and recMsg.Content == '4':
+                toUser = recMsg.FromUserName
+                fromUser = recMsg.ToUserName
+                title = "餐厅卫生状况查询"
+                content = "对接上海市食品药品监督管理局系统信息，提供实时准确的餐饮店家的卫生状况评估，点击进入..."
+                picturl = "http://alitiane.com/images/foodcheck.jpg"
+                url = "http://shanghaicity.openservice.kankanews.com/public/cy/index"
+                replyMsg = reply.ImageTextMsgSimple(toUser, fromUser, title, content, picturl, url)
+                return replyMsg.send()
+            elif isinstance(recMsg, receive.Msg) and recMsg.MsgType == 'text' and recMsg.Content == '5':
+                toUser = recMsg.FromUserName
+                fromUser = recMsg.ToUserName
+                title = "公交实时查询"
+                content = "对接上海市公交系统信息，提供实时准确的公交车到站时间查询，点击进入..."
+                picturl = "http://alitiane.com/images/buscheck.jpg"
+                url = "http://139.196.29.97:8080"
+                replyMsg = reply.ImageTextMsgSimple(toUser, fromUser, title, content, picturl, url)
+                return replyMsg.send()
+            
             elif isinstance(recMsg, receive.Msg) and recMsg.MsgType == 'text':
                 toUser = recMsg.FromUserName
                 fromUser = recMsg.ToUserName
-                content_sm = "回复‘wq’：历史回顾；\n\r回复其它字符：使用说明"
+                content_sm = "回复‘1’：经典电影观看\n\r回复‘2’：最新电影观看\n\r回复‘3’：挑战AI围棋\n\r回复‘4’：上海餐厅卫生状况查询\n\r回复其它字符：使用说明"
                 replyMsg = reply.TextMsg(toUser, fromUser, content_sm)
                 return replyMsg.send()
-            elif isinstance(recMsg, receive.Msg) and recMsg.MsgType == 'event':
-                print recMsg.Content
-                if recMsg.Content == "subscribe":
+
+            elif recMsg.MsgType == 'event':
+                if recMsg.Event == "subscribe":
                     toUser = recMsg.FromUserName
                     fromUser = recMsg.ToUserName
-                    content_sm = "欢迎使用‘丽人电影’ \n\r每日推送最好最新的电影 让你好看每一天"
-                    replyMsg = reply.TextMsg(toUser, fromUser, content_sm)
+                    content_sm = "每日推送最好最新的电影 \n\r 回复‘1’：观看经典电影\n\r 回复‘2’：观看最新电影\n\r 回复‘3’：挑战AI围棋\n\r 回复‘4’：上海餐厅卫生状况查询\n\r 回复其它字符：使用说明"
+                    title = "丽人电影欢迎您          --阿狸天鹅出品"
+                    temp = mysql.Select()
+                    movie = temp.GetDataOld()
+                    picturl = movie[11]
+                    replyMsg = reply.ImageTextMsgSimple(toUser, fromUser, title, content_sm, picturl, "http://alitiane.com/index/")
                     return replyMsg.send()
-                if recMsg.Content == "unsubscribe":
+                if recMsg.Event == "unsubscribe":
                     toUser = recMsg.FromUserName
                     fromUser = recMsg.ToUserName
                     content_sm = "很抱歉，没达到您的预期，我们会继续努力改进"
@@ -78,9 +122,7 @@ class Handle(object):
             else:
                 print "暂且不处理"
                 return "success"
-           # elif isinstance(recMsg, receive.Msg) and recMsg.MsgType == 'text' and recMsg.Content == 'sm'
 
-     
         except Exception, Argment:
             return Argment
 

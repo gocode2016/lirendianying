@@ -4,12 +4,18 @@ import web
 from handle import Handle
 from images import Images
 from index import Index
-
-render = web.template.render('templates/')
+from index_new import IndexNew
+from history import History
+from history_new import HistoryNew
+from interface_js import InterfaceJS
 urls = (
     '/', 'Handle',
+    '/MP_verify_4zXQNL6J5S0J2tmS.txt','InterfaceJS',
     '/images/(.*)', "Images",
-    '/index/(.*)','Index'
+    '/index/','Index',
+    '/history','History',
+    '/history_new','HistoryNew',
+    '/index/new', 'IndexNew',
 )
 
 if __name__ == '__main__':
