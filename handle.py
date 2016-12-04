@@ -51,7 +51,8 @@ class Handle(object):
                 results_rate = mysqlData.SelectData("movie_rate","old_movies")
                 results_pic = mysqlData.SelectData("movie_picurl","old_movies")
                 url_big = "http://alitiane.com/history"
-                replyMsg = reply.ImageTextMsg(toUser, fromUser,results_name, results_rate, results_pic,results_url,url_big)
+                title_big = "点击进入经典电影观看目录"
+                replyMsg = reply.ImageTextMsg(toUser, fromUser,results_name, results_rate, results_pic,results_url,url_big,title_big)
                 return replyMsg.send()
             
             if isinstance(recMsg, receive.Msg) and recMsg.MsgType == 'text' and recMsg.Content == '2':
@@ -63,7 +64,8 @@ class Handle(object):
                 results_rate = mysqlData.SelectData("movie_rate","old_new_movies")
                 results_pic = mysqlData.SelectData("movie_picurl","old_new_movies")
                 url_big = "http://alitiane.com/history_new"
-                replyMsg = reply.ImageTextMsg(toUser, fromUser,results_name, results_rate, results_pic,results_url,url_big)
+                title_big = "点击进入热门电影观看目录"
+                replyMsg = reply.ImageTextMsg(toUser, fromUser,results_name, results_rate, results_pic,results_url,url_big,title_big)
                 return replyMsg.send()
 
             elif isinstance(recMsg, receive.Msg) and recMsg.MsgType == 'text' and recMsg.Content == '3':

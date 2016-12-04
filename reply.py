@@ -81,14 +81,14 @@ class ImageTextMsgSimple(Msg):
         return XmlForm.format(**self.__dict)
 
 class ImageTextMsg(Msg):
-    def __init__(self, toUserName, fromUserName, title, description, picurl, url, url_big):
+    def __init__(self, toUserName, fromUserName, title, description, picurl, url, url_big, title_big):
         self.__dict = dict()
         self.__dict['toUser'] = toUserName
         self.__dict['fromUser'] = fromUserName
         self.__dict['picurl_big'] = "http://alitiane.com/images/2169762_103947888000_2.jpg"
         self.__dict['url_big'] = url_big
         self.__dict['description_big'] = "历史回顾"
-        self.__dict['title_big'] = "点击进入电影观看清单"
+        self.__dict['title_big'] = title_big
         self.__dict['CreateTime'] = int(time.time())
         #print self.__dict['description_big']
         for i in range(1,6):
