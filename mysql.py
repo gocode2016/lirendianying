@@ -48,6 +48,21 @@ class Select():
         print row
         return row
 
+    def QueryMovies(self, name):
+        conn = MySQLdb.connect(host="139.196.29.97", db='movie', user='root', passwd='root', port=3306,
+                               charset='utf8', use_unicode=True)
+        cur = conn.cursor()
+        print name
+
+        sql = " select * from old_movies where movie_name like '%s' UNION select * from new_movies where movie_name like '%s' UNION select * from best_movies where movie_name like '%s' UNION select * from old_new_movies where movie_name like '%s'" % (('%'+name+'%'),('%'+name+'%'),('%'+name+'%'),('%'+name+'%'))
+
+        cur.execute(sql)
+        results = cur.fetchall()
+
+        cur.close()
+        conn.close()
+        return results
+
     def GetDataOldNew(self):
         conn = MySQLdb.connect(host="139.196.29.97", db='movie', user='root', passwd='root', port=3306,
                                     charset='utf8', use_unicode=True)

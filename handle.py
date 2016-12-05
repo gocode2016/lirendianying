@@ -100,9 +100,26 @@ class Handle(object):
             elif isinstance(recMsg, receive.Msg) and recMsg.MsgType == 'text':
                 toUser = recMsg.FromUserName
                 fromUser = recMsg.ToUserName
-                content_sm = "回复‘1’：经典电影观看\n\r回复‘2’：最新电影观看\n\r回复‘3’：挑战AI围棋\n\r回复‘4’：上海餐厅卫生状况查询\n\r回复其它字符：使用说明"
-                replyMsg = reply.TextMsg(toUser, fromUser, content_sm)
+                tempSql = mysql.Select()
+                #content_sm = "回复‘1’：经典电影观看\n\r回复‘2’：最新电影观看\n\r回复‘3’：挑战AI围棋\n\r回复‘4’：上海餐厅卫生状况查询\n\r回复其它字符：使用说明"
+                name = recMsg.Content
+                if not name:
+                    content_sm = "回复‘1’：经典电影观看\n\r回复‘2’：最新电影观看\n\r回复‘3’：挑战AI围棋\n\r回复‘4’：上海餐厅卫生状况查询\n\r 输入电影名查询电影"
+                    replyMsg = reply.TextMsg(toUser, fromUser, content_sm)
+                    return replyMsg.send()
+                else:
+                    result = tempSql.QueryMovies(name)
+                    if not result:
+                        content_sm = "sorry, %s还没加入到库里，我们会尽快加入"%name
+                        replyMsg = reply.TextMsg(toUser, fromUser, content_sm)
+                    else:
+                        #print result[0][0]
+                        #print result[0][8]
+                        #print result[0][11]
+                        #print result[0][9]
+                        replyMsg = reply.ImageTextMsgSimple(toUser, fromUser, result[0][0].encode('utf8'), result[0][8].encode('utf8'), result[0][11], result[0][9])
                 return replyMsg.send()
+
 
             elif recMsg.MsgType == 'event':
                 if recMsg.Event == "subscribe":

@@ -15,6 +15,7 @@ class TextMsg(Msg):
         self.__dict['FromUserName'] = fromUserName
         self.__dict['CreateTime'] = int(time.time())
         self.__dict['Content'] = content
+        #self.__dict['url'] = url
        # print "fffffffffffffff"
     def send(self):
         XmlForm = """
