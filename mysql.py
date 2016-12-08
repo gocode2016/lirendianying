@@ -1,10 +1,10 @@
 # -*-coding:utf-8-*-
-
+from setting import MYSQL_USER,MYSQL_PASSWD
 import MySQLdb
 
 class Select():
     def SelectDataDesc(self,key, table):
-        conn = MySQLdb.connect(host="139.196.29.97", db='movie', user='root', passwd='root', port=3306, charset= 'utf8', use_unicode=True)
+        conn = MySQLdb.connect(host="139.196.29.97", db='movie', user=MYSQL_USER, passwd=MYSQL_PASSWD, port=3306, charset= 'utf8', use_unicode=True)
         cur = conn.cursor()
 
         sql = "select %s from %s order by movie_id desc" %(key,table)
@@ -16,7 +16,7 @@ class Select():
         return results
 
     def SelectData(self,key, table):
-        conn = MySQLdb.connect(host="139.196.29.97", db='movie', user='root', passwd='root', port=3306, charset= 'utf8', use_unicode=True)
+        conn = MySQLdb.connect(host="139.196.29.97", db='movie', user=MYSQL_USER, passwd=MYSQL_PASSWD, port=3306, charset= 'utf8', use_unicode=True)
         cur = conn.cursor()
 
         sql = "select %s from %s order by movie_id desc" %(key,table)
@@ -28,7 +28,7 @@ class Select():
         return results
 
     def GetDataOld(self):
-        conn = MySQLdb.connect(host="139.196.29.97", db='movie', user='root', passwd='root', port=3306,
+        conn = MySQLdb.connect(host="139.196.29.97", db='movie', user=MYSQL_USER, passwd=MYSQL_PASSWD, port=3306,
                                     charset='utf8', use_unicode=True)
         cur = conn.cursor()
         cur.execute('SELECT * FROM old_movies order by movie_id desc')
@@ -49,7 +49,7 @@ class Select():
         return row
 
     def QueryMovies(self, name):
-        conn = MySQLdb.connect(host="139.196.29.97", db='movie', user='root', passwd='root', port=3306,
+        conn = MySQLdb.connect(host="139.196.29.97", db='movie', user=MYSQL_USER, passwd=MYSQL_PASSWD, port=3306,
                                charset='utf8', use_unicode=True)
         cur = conn.cursor()
         print name
@@ -64,7 +64,7 @@ class Select():
         return results
 
     def GetDataOldNew(self):
-        conn = MySQLdb.connect(host="139.196.29.97", db='movie', user='root', passwd='root', port=3306,
+        conn = MySQLdb.connect(host="139.196.29.97", db='movie', user=MYSQL_USER, passwd=MYSQL_PASSWD, port=3306,
                                     charset='utf8', use_unicode=True)
         cur = conn.cursor()
         cur.execute('SELECT * FROM old_new_movies order by movie_id desc')

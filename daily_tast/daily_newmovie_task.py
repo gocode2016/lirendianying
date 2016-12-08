@@ -1,12 +1,12 @@
 # -*-coding:utf-8-*-
-
+from setting import MYSQL_USER,MYSQL_PASSWD
 import MySQLdb
 
 class SelectDaily():
     row = ()
     def GetData(self):
         global row
-        conn = MySQLdb.connect(host="139.196.29.97", db='movie', user='root', passwd='root', port=3306,
+        conn = MySQLdb.connect(host="139.196.29.97", db='movie', user=MYSQL_USER, passwd=MYSQL_PASSWD, port=3306,
                                     charset='utf8', use_unicode=True)
         cur = conn.cursor()
         cur.execute('SELECT * FROM new_movies')
@@ -34,7 +34,7 @@ class SelectDaily():
 
     def Insert(self):
         global row
-        conn = MySQLdb.connect(host="139.196.29.97", db='movie', user='root', passwd='root', port=3306,
+        conn = MySQLdb.connect(host="139.196.29.97", db='movie', user='root', passwd='TRzjy123', port=3306,
                                charset='utf8', use_unicode=True)
         cur = conn.cursor()
         sql = 'INSERT INTO old_new_movies(movie_name, movie_rate, movie_direct,movie_writer,movie_roles,movie_language,movie_date\
