@@ -1,4 +1,7 @@
 # -*-coding:utf-8-*-
+#import sys
+#sys.path.append('/root/git/weixin/lirendianying')
+
 from setting import MYSQL_USER,MYSQL_PASSWD
 import MySQLdb
 
