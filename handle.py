@@ -51,7 +51,7 @@ class Handle(object):
                 results_rate = mysqlData.SelectData("movie_rate","old_movies")
                 results_pic = mysqlData.SelectData("movie_picurl","old_movies")
                 url_big = "http://alitiane.com/history"
-                title_big = "点击进入经典电影观看目录"
+                title_big = "点击进入《经典电影》库－免费观看"
                 replyMsg = reply.ImageTextMsg(toUser, fromUser,results_name, results_rate, results_pic,results_url,url_big,title_big)
                 return replyMsg.send()
             
@@ -64,7 +64,7 @@ class Handle(object):
                 results_rate = mysqlData.SelectData("movie_rate","old_new_movies")
                 results_pic = mysqlData.SelectData("movie_picurl","old_new_movies")
                 url_big = "http://alitiane.com/history_new"
-                title_big = "点击进入热门电影观看目录"
+                title_big = "点击进入《热门电影》库－免费观看"
                 replyMsg = reply.ImageTextMsg(toUser, fromUser,results_name, results_rate, results_pic,results_url,url_big,title_big)
                 return replyMsg.send()
 
@@ -110,7 +110,7 @@ class Handle(object):
                 else:
                     result = tempSql.QueryMovies(name)
                     if not result:
-                        content_sm = "sorry, %s还没加入到库里，我们会尽快加入"%name
+                        content_sm = "sorry, 电影《 %s 》还没加入到库里，我们会尽快加入！！\n\r 回复‘1’：经典电影观看\n\r回复‘2’：最新电影观看\n\r回复‘3’：挑战AI围棋\n\r回复‘4’：上海餐厅卫生状况查询\n\r 输入电影名查询电影"%name
                         replyMsg = reply.TextMsg(toUser, fromUser, content_sm)
                     else:
                         #print result[0][0]
@@ -155,4 +155,14 @@ class Handle(object):
         resp = urllib2.urlopen(req)
         reson = json.loads(resp.read())
         return reson
+
+
+
+
+
+
+
+
+
+
 

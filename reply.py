@@ -92,7 +92,8 @@ class ImageTextMsg(Msg):
         self.__dict['title_big'] = title_big
         self.__dict['CreateTime'] = int(time.time())
         #print self.__dict['description_big']
-        for i in range(1,6):
+        print title[0][0].encode('utf-8')
+        for i in range(0,5):
             self.__dict['title%d'%i] = title[i][0].encode('utf-8')
             self.__dict['picurl%d' %i] = picurl[i][0].encode('utf-8')
             self.__dict['url%d' %i] = url[i][0].encode('utf-8')
@@ -111,6 +112,12 @@ class ImageTextMsg(Msg):
         <Description><![CDATA[{description_big}]]></Description>
         <PicUrl><![CDATA[{picurl_big}]]></PicUrl>
         <Url><![CDATA[{url_big}]]></Url>
+        </item>
+        <item>
+        <Title><![CDATA[{title0}]]></Title>
+        <Description><![CDATA[{description0}]]></Description>
+        <PicUrl><![CDATA[{picurl0}]]></PicUrl>
+        <Url><![CDATA[{url0}]]></Url>
         </item>
         <item>
         <Title><![CDATA[{title1}]]></Title>
@@ -135,12 +142,6 @@ class ImageTextMsg(Msg):
         <Description><![CDATA[{description4}]]></Description>
         <PicUrl><![CDATA[{picurl4}]]></PicUrl>
         <Url><![CDATA[{url4}]]></Url>
-        </item>
-        <item>
-        <Title><![CDATA[{title5}]]></Title>
-        <Description><![CDATA[{description5}]]></Description>
-        <PicUrl><![CDATA[{picurl5}]]></PicUrl>
-        <Url><![CDATA[{url5}]]></Url>
         </item>
         </Articles>
         </xml> 
