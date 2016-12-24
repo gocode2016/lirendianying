@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9a2e0d9-3cbb-469f-aa50-f393bfe67fd0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/wearing/.history.html.swo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/wearing/.history.html.swp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/wearing/body.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/wearing/page.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/wearing/wearing.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wearing.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handle.py" afterPath="$PROJECT_DIR$/handle.py" />
     </list>
     <ignored path="lirendianying.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,26 +23,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="daily.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/daily.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="body.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/body.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="backup.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/backup.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -79,13 +53,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wearing.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="wearing.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/wearing/wearing.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="600">
               <caret line="41" column="63" selection-start-line="41" selection-start-column="63" selection-end-line="41" selection-end-column="63" />
               <folding />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="handle.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/handle.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="136" column="37" selection-start-line="136" selection-start-column="37" selection-end-line="136" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wearing.jpg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/images/wearing.jpg">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
@@ -154,6 +145,7 @@
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/wearing.py" />
         <option value="$PROJECT_DIR$/templates/wearing/wearing.html" />
+        <option value="$PROJECT_DIR$/handle.py" />
       </list>
     </option>
   </component>
@@ -241,6 +233,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="wearing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lirendianying" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lirendianying" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -522,7 +528,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1787#2762#1" expanded="true" />
+            <element signature="e#1787#2762#1" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -626,6 +632,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
           <caret line="41" column="63" selection-start-line="41" selection-start-column="63" selection-end-line="41" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images/wearing.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="136" column="37" selection-start-line="136" selection-start-column="37" selection-end-line="136" selection-end-column="37" />
           <folding />
         </state>
       </provider>

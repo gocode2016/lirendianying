@@ -96,7 +96,15 @@ class Handle(object):
                 url = "http://139.196.29.97:8080"
                 replyMsg = reply.ImageTextMsgSimple(toUser, fromUser, title, content, picturl, url)
                 return replyMsg.send()
-            
+            elif isinstance(recMsg, receive.Msg) and recMsg.MsgType == 'text' and recMsg.Content == '7':
+                toUser = recMsg.FromUserName
+                fromUser = recMsg.ToUserName
+                title = "往期穿衣搭配精选"
+                content = "每日穿搭资讯回顾，点击进入..."
+                picturl = "http://alitiane.com/images/wearing.jpg"
+                url = "http://alitiane/wearing"
+                replyMsg = reply.ImageTextMsgSimple(toUser, fromUser, title, content, picturl, url)
+                return replyMsg.send()
             elif isinstance(recMsg, receive.Msg) and recMsg.MsgType == 'text':
                 toUser = recMsg.FromUserName
                 fromUser = recMsg.ToUserName
@@ -104,13 +112,13 @@ class Handle(object):
                 #content_sm = "回复‘1’：经典电影观看\n\r回复‘2’：最新电影观看\n\r回复‘3’：挑战AI围棋\n\r回复‘4’：上海餐厅卫生状况查询\n\r回复其它字符：使用说明"
                 name = recMsg.Content
                 if not name:
-                    content_sm = "回复‘1’：经典电影观看\n\r回复‘2’：最新电影观看\n\r回复‘3’：挑战AI围棋\n\r回复‘4’：上海餐厅卫生状况查询\n\r 输入电影名查询电影"
+                    content_sm = "回复‘1’：经典电影观看\n\r回复‘2’：最新电影观看\n\r回复‘3’：挑战AI围棋\n\r回复‘7’：时尚资讯\n\r 输入电影名查询电影"
                     replyMsg = reply.TextMsg(toUser, fromUser, content_sm)
                     return replyMsg.send()
                 else:
                     result = tempSql.QueryMovies(name)
                     if not result:
-                        content_sm = "sorry, 电影《 %s 》还没加入到库里，我们会尽快加入！！\n\r 回复‘1’：经典电影观看\n\r回复‘2’：最新电影观看\n\r回复‘3’：挑战AI围棋\n\r回复‘4’：上海餐厅卫生状况查询\n\r 输入电影名查询电影"%name
+                        content_sm = "sorry, 电影《 %s 》还没加入到库里，我们会尽快加入！！\n\r 回复‘1’：经典电影观看\n\r回复‘2’：最新电影观看\n\r回复‘3’：挑战AI围棋\n\r回复‘7’：时尚资讯\n\r 输入电影名查询电影"%name
                         replyMsg = reply.TextMsg(toUser, fromUser, content_sm)
                     else:
                         #print result[0][0]
@@ -125,8 +133,8 @@ class Handle(object):
                 if recMsg.Event == "subscribe":
                     toUser = recMsg.FromUserName
                     fromUser = recMsg.ToUserName
-                    content_sm = "每日推送最好最新的电影 \n\r 回复‘1’：观看经典电影\n\r 回复‘2’：观看最新电影\n\r 回复‘3’：挑战AI围棋\n\r 回复‘4’：上海餐厅卫生状况查询\n\r 回复其它字符：使用说明"
-                    title = "丽人电影欢迎您          --阿狸天鹅出品"
+                    content_sm = "每日推送最好最新的电影 \n\r 回复‘1’：观看经典电影\n\r 回复‘2’：观看最新电影\n\r 回复‘3’：挑战AI围棋\n\r 回复‘7’：时尚资讯\n\r 回复其它字符：使用说明"
+                    title = "天辣！你终于来了"
                     temp = mysql.Select()
                     movie = temp.GetDataOld()
                     picturl = movie[11]
