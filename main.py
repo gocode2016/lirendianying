@@ -6,6 +6,7 @@ from images import Images
 from index import Index
 from index_new import IndexNew
 from history import History
+from wearing import Wear
 from history_new import HistoryNew
 from interface_js import InterfaceJS
 urls = (
@@ -16,6 +17,7 @@ urls = (
     '/history','History',
     '/history_new','HistoryNew',
     '/index/new', 'IndexNew',
+    '/wearing', 'Wear',
 )
 
 if __name__ == '__main__':

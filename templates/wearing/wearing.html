@@ -1,0 +1,72 @@
+$def with(wear, num)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>阿狸天鹅出品</title>
+
+<!-- Meta Data -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+<!-- Site Title -->
+
+<!-- Link to Style External Sheet -->
+    <link href="./page.css" type="text/css" rel="stylesheet" />
+    <link href="./body.css" type="text/css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+<div id="page_wrapper" class="rich_media">
+    <div id="top_and_area" class="top_banner" style="display: none;">
+
+    </div>
+    <div id="header_wrapper" class="rich_media_inner">
+        <div id="page-content">
+            <div id="img-content" class="rich_media_area_primary">
+                <h2 class="rich_media_title" id="activity-name">
+                    往期穿搭回顾
+                </h2>
+                <div class="rich_media_content">
+                    <section style="font-family: 微软雅黑;font-size: 16px;text-align: center">
+                        <section style="font-size: medium;white-space: normal;">
+                            <section>
+                            $for i in range(0, num): 
+                                $ number = i
+                           	 <section class data-id="7237" data-color="rgb(12,137,24)"
+                                    		 style="font-size: medium;white-space: normal;">
+                               		 <section style="margin: 3px;box-shadow: rgba(0,0,0,0.298039) 0px 1px 3px;box-sizing: border-box">
+                                   		 <section style="padding: 16px;border-top: 1px solid rgb(242,242,242);color: rgb(153,153,153);background-color: rgb(250,250,250);
+                                            			 background-image: none;background-attachment: scroll;background-position: 0px 0px;background-repeat:repeat;box-sizing: border-box">
+                                       			 <img src=$wear[i][2] style="margin-right: 10px;float: left;visibility: visible;width: 34px;height: auto;">
+                                       			 <section style="clear:none box-sizing: border-box;font-size: 12px;padding: 0 0;line-height: 17px;">
+                                           			 <p style="clear: none;font-size: 12px;line-height: 17px;white-space: normal;text-align: center;">
+                                               				 <a href=$wear[i][3] style="color: rgb(118,146,60);box-sizing: border-box;" target="_blank">
+                                                   				 <span style="font-size: 15px;">
+                                                       					 <strong>
+                                                        					 $wear[i][1]
+                                                       					 </strong>
+                                                   				 </span>
+                                               				 </a>
+                                           			 </p>
+                                       			 </section>
+                                   		 </section>
+                               		 </section>
+                           	 </section>
+                             </section>
+                        </section>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="footer" class="rich_media">
+    <p style="margin: 0em 1em;letter-spacing: 1.5px;line-height: 25.6px;text-align: center">
+        CopyRight@阿狸天鹅
+    </p>
+</div>
+</body>
+</html>
